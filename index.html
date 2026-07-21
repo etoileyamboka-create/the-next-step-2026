@@ -1,0 +1,113 @@
+<main id="tns-app">
+  <style>
+    #tns-app { --red: #bd0000; --black: #050505; --paper: #ffffff; --soft: #ece9e2; color: var(--black); font-family: Arial, sans-serif; background: var(--soft); }
+    #tns-app * { box-sizing: border-box; }
+    #tns-app .hero { position: relative; overflow: hidden; isolation: isolate; min-height: 620px; padding: 28px 24px 54px; color: var(--paper); background: #170d08; }
+    #tns-app .hero::before { content:""; position:absolute; z-index:-2; inset:0; background: linear-gradient(90deg, #050505 0%, #050505e6 40%, #05050566 70%, #05050599 100%), url('assets/affiche-next-step.jpg') center 38%/cover; }
+    #tns-app .hero::after { content:""; position:absolute; z-index:-1; inset:auto -15% -150px 35%; height:360px; transform:rotate(-8deg); background:var(--red); opacity:.9; }
+    #tns-app .wrap { width: min(1040px, 100%); margin: auto; }
+    #tns-app .brand { display: flex; align-items: center; gap: 14px; font-family: Impact, "Arial Black", sans-serif; letter-spacing: .05em; font-size: 1.1rem; }
+    #tns-app .brand-logo { width: 66px; height: 66px; object-fit: contain; filter: invert(1); }
+    #tns-app h1, #tns-app h2, #tns-app legend, #tns-app .cta, #tns-app .submit, #tns-app .download, #tns-app .badge { font-family: Impact, "Arial Black", sans-serif; letter-spacing: .035em; text-transform: uppercase; }
+    #tns-app h1 { max-width: 720px; margin: 86px 0 15px; font-size: clamp(3rem, 10vw, 7.2rem); line-height: .83; text-shadow: 4px 4px 0 var(--red); }
+    #tns-app .subtitle { display:inline-block; max-width: 640px; padding: 9px 14px; color:var(--black); background:var(--paper); font-family: Impact, "Arial Black", sans-serif; font-size: clamp(1.15rem, 3vw, 2rem); letter-spacing:.04em; margin: 0; text-transform: uppercase; }
+    #tns-app .motto { margin: 28px 0; font-size: 1.1rem; font-weight:bold; }
+    #tns-app .event-meta { display: flex; flex-wrap: wrap; gap: 12px 28px; font-weight: 700; }
+    #tns-app button { cursor: pointer; font: inherit; font-weight: 800; }
+    #tns-app .cta { margin-top: 35px; padding: 17px 28px; border: 3px solid var(--paper); color: var(--paper); background: var(--red); font-size: 1.2rem; box-shadow: 6px 6px 0 var(--black); }
+    #tns-app .form-section, #tns-app .admin-section { padding: 68px 24px; background: repeating-linear-gradient(-35deg, #e3dfd5 0 3px, #ece9e2 3px 18px); }
+    #tns-app .form-box, #tns-app .admin-box, #tns-app .success-box { background: var(--paper); padding: clamp(20px, 5vw, 44px); border-top: 12px solid var(--black); box-shadow: 10px 10px 0 var(--red); }
+    #tns-app h2 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.3rem); line-height:.9; }
+    #tns-app .intro { margin: 0 0 28px; color: #555; }
+    #tns-app fieldset { border: 0; padding: 0; margin: 0 0 25px; }
+    #tns-app legend { margin-bottom: 15px; padding:7px 10px; color:#fff; background:#050505; font-size: 1.25rem; }
+    #tns-app .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; }
+    #tns-app .full { grid-column: 1 / -1; }
+    #tns-app label { display: block; margin-bottom: 7px; font-weight: 700; }
+    #tns-app input, #tns-app select { width: 100%; padding: 13px; border: 1px solid #aaa; background: #fff; font: inherit; }
+    #tns-app .upload { padding: 22px; border: 3px dashed var(--red); background: #fff8f8; text-align: center; }
+    #tns-app .upload label { color: var(--red); font-size: 1.05rem; }
+    #tns-app .small { margin: 9px 0 0; font-size: .88rem; color: #555; }
+    #tns-app .check { display: flex; align-items: flex-start; gap: 10px; }
+    #tns-app .check input { width: auto; margin-top: 3px; }
+    #tns-app .submit { width: 100%; padding: 17px; border: 0; background: var(--red); color: var(--paper); font-size:1.2rem; box-shadow: 5px 5px 0 var(--black); }
+    #tns-app .success-section { padding: 70px 24px; min-height: 560px; display: grid; place-items: center; background: linear-gradient(135deg, var(--black), #3e090b); }
+    #tns-app .success-box { width: min(600px, 100%); text-align: center; }
+    #tns-app .success-icon { color: var(--red); font-size: 56px; }
+    #tns-app .number { margin: 20px auto; padding: 15px; background: var(--soft); font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; letter-spacing: .08em; }
+    #tns-app .badge { padding: 13px 21px; border: 2px solid var(--black); background: var(--paper); }
+    #tns-app .admin-section { border-top: 12px solid var(--red); }
+    #tns-app .admin-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 24px; }
+    #tns-app .download { padding: 11px 14px; border: 0; color: #fff; background: var(--red); }
+    #tns-app .table-wrap { overflow-x: auto; }
+    #tns-app table { border-collapse: collapse; width: 100%; min-width: 650px; }
+    #tns-app th, #tns-app td { padding: 13px 10px; text-align: left; border-bottom: 1px solid #ddd; }
+    #tns-app th { background: var(--black); color: #fff; }
+    #tns-app .status { font-weight: 800; color: #8b1b20; }
+    #tns-app .action { padding: 8px 10px; margin: 2px; border: 1px solid #222; background: #fff; }
+    #tns-app .accept { background: #111; color: #fff; }
+    #tns-app [hidden] { display: none !important; }
+    @media (max-width: 600px) { #tns-app .grid { grid-template-columns: 1fr; } #tns-app .full { grid-column: auto; } #tns-app h1 { margin-top: 52px; } }
+  </style>
+
+  <section id="home" class="hero">
+    <div class="wrap">
+      <div class="brand"><img class="brand-logo" src="assets/logo-next-step.png" alt="Logo The Next Step"> THE NEXT STEP</div>
+      <h1>MARCHE<br>DES NOUVEAUX<br>BACHELIERS</h1>
+      <p class="subtitle">The Next Step · Édition 2026</p>
+      <p class="motto">👣 Chaque pas nous rapproche de l'avenir</p>
+      <div class="event-meta"><span>📅 26 septembre 2026</span><span>📍 Pointe-Noire</span></div>
+      <button class="cta" type="button" data-go-register>JE M'INSCRIS GRATUITEMENT</button>
+    </div>
+  </section>
+
+  <section id="registration" class="form-section">
+    <div class="wrap form-box">
+      <h2>Formulaire d'inscription</h2>
+      <p class="intro">Inscription gratuite pour les nouveaux bacheliers.</p>
+      <form id="registration-form">
+        <fieldset><legend>Informations personnelles</legend><div class="grid">
+          <div><label for="name">Nom</label><input id="name" required autocomplete="family-name"></div>
+          <div><label for="first-name">Prénom</label><input id="first-name" required autocomplete="given-name"></div>
+          <div><label for="birth-date">Date de naissance</label><input id="birth-date" type="date" required></div>
+          <div><label for="gender">Sexe</label><select id="gender" required><option value="">Sélectionnez</option><option>Féminin</option><option>Masculin</option><option>Préfère ne pas répondre</option></select></div>
+          <div><label for="phone">Téléphone</label><input id="phone" type="tel" required placeholder="+242 06 000 00 00"></div>
+          <div><label for="email">Adresse e-mail <span class="small">(facultatif)</span></label><input id="email" type="email" autocomplete="email"></div>
+        </div></fieldset>
+        <fieldset><legend>Validation du BAC</legend><div class="upload">
+          <label for="bac-proof">📷 Ajouter la capture d'écran du résultat du BAC</label>
+          <input id="bac-proof" type="file" accept="image/jpeg,image/png,application/pdf" required>
+          <p class="small">Formats acceptés : JPG · PNG · PDF — 5 Mo maximum</p>
+        </div></fieldset>
+        <fieldset><legend>Informations complémentaires</legend><div class="grid">
+          <div class="full"><label for="identity-photo">Photo format identité</label><input id="identity-photo" type="file" accept="image/jpeg,image/png" required><p class="small">JPG ou PNG — 5 Mo maximum</p></div>
+          <div class="full"><label for="health">Avez-vous un problème de santé à nous signaler ?</label><select id="health"><option value="non">Non</option><option value="oui">Oui</option></select><p class="small">Ces informations sont confidentielles et servent uniquement à votre sécurité pendant l'événement.</p></div>
+        </div></fieldset>
+        <div class="check"><input id="certify" type="checkbox" required><label for="certify">Je certifie que les informations fournies sont exactes.</label></div>
+        <p><button class="submit" type="submit">VALIDER MON INSCRIPTION</button></p>
+      </form>
+    </div>
+  </section>
+
+  <section id="success" class="success-section" hidden>
+    <div class="success-box"><div class="success-icon">🎉</div><h2>Félicitations !</h2><p>Votre inscription à The Next Step 2026 a bien été enregistrée.</p><p>Votre numéro de participant :</p><div id="participant-number" class="number">TNS-2026-00125</div><p>📧 Vous recevrez prochainement les informations relatives à la marche.</p><button id="badge-button" class="badge" type="button">Télécharger mon badge</button></div>
+  </section>
+
+  <section id="admin" class="admin-section">
+    <div class="wrap admin-box"><div class="admin-head"><div><h2>Espace Administrateur</h2><p class="intro">Gestion des inscriptions</p></div><button id="export-button" class="download" type="button">Télécharger la liste Excel</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Nom</th><th>Prénom</th><th>Téléphone</th><th>Capture BAC</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="participant-list"><tr><td>—</td><td>—</td><td>—</td><td>—</td><td class="status">En attente</td><td>—</td></tr></tbody></table></div>
+    </div>
+  </section>
+  <script>
+    (() => {
+      const root = document.getElementById('tns-app');
+      const form = root.querySelector('#registration-form');
+      const success = root.querySelector('#success');
+      const list = root.querySelector('#participant-list');
+      root.querySelector('[data-go-register]').addEventListener('click', () => root.querySelector('#registration').scrollIntoView({behavior:'smooth'}));
+      form.addEventListener('submit', e => { e.preventDefault(); const file = root.querySelector('#bac-proof').files[0]; const photo = root.querySelector('#identity-photo').files[0]; if (!form.checkValidity()) return form.reportValidity(); if ([file,photo].some(item => item && item.size > 5*1024*1024)) return alert('Chaque fichier ne doit pas dépasser 5 Mo.'); const name = root.querySelector('#name').value; const first = root.querySelector('#first-name').value; const phone = root.querySelector('#phone').value; list.innerHTML = `<tr><td>${name}</td><td>${first}</td><td>${phone}</td><td>${file ? file.name : '—'}</td><td class="status">En attente</td><td><button class="action accept" type="button">✅ Accepter</button><button class="action" type="button">❌ Refuser</button><button class="action" type="button">📩 SMS</button><button class="action" type="button">📧 Mail</button></td></tr>`; success.hidden=false; success.scrollIntoView({behavior:'smooth'}); });
+      root.querySelector('#badge-button').addEventListener('click', () => alert('Le badge et son QR Code seront disponibles après validation par l’organisateur.'));
+      root.querySelector('#export-button').addEventListener('click', () => alert('La fonction Excel sera reliée à la base de données dans la version en ligne.'));
+    })();
+  </script>
+</main>
